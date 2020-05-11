@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-con-client-2
+  labels:
+    app: go-con-client-2
+spec:
+  selector:
+    matchLabels:
+      app: go-con-client-2
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: go-con-client-2
+    spec:
+      containers:
+        - name: master
+          image: go-con-client-2
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8081
